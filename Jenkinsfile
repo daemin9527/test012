@@ -28,6 +28,7 @@ pipeline {
           }
           dir('/home/jenkins/go/src/github.com/daemin9527/test012/charts/preview') {
             sh "make preview"
+            sh "helm init --client-only --stable-repo-url https://aliacs-app-catalog.oss-cn-hangzhou.aliyuncs.com/charts/"
             sh "jx preview --app $APP_NAME --dir ../.."
           }
         }

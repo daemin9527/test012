@@ -65,6 +65,8 @@ pipeline {
         container('go') {
           dir('/home/jenkins/go/src/github.com/daemin9527/test012/charts/test012') {
             sh "jx step changelog --version v\$(cat ../../VERSION)"
+            
+            sh "helm init --client-only --stable-repo-url https://aliacs-app-catalog.oss-cn-hangzhou.aliyuncs.com/charts/"
 
             // release the helm chart
             sh "jx step helm release"
